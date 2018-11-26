@@ -28,7 +28,7 @@ mkdir -p $wdir/collected
 #create service for startup
 if [ ! -f /etc/systemd/system/NaughtyKeyboard.service ]; then
            echo "Injecting startup script..."
-        cat <<- EOF | sudo tee /etc/systemd/system/P4wnP1.service > /dev/null
+        cat <<- EOF | sudo tee /etc/systemd/system/NaughtyKeyboard.service > /dev/null
                 [Unit]
                 Description= Startup Service
                 #After=systemd-modules-load.service
@@ -48,7 +48,7 @@ if [ ! -f /etc/systemd/system/NaughtyKeyboard.service ]; then
 EOF
 fi
 
-sudo systemctl enable P4wnP1.service
+sudo systemctl enable NaughtyKeyboard.service
 
 #remove fsck from fstab
 echo "Disabling FSCK on boot.."
