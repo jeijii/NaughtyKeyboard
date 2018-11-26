@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+wdir=$( cd $(dirname $BASH_SOURCE[0]) && pwd)
+
 #create service for startup
 if [ ! -f /etc/systemd/system/NaughtyKeyboard.service ]; then
            echo "Injecting startup script..."
