@@ -50,9 +50,9 @@ mkdir -p functions/mass_storage.usb0
 echo 1 > functions/mass_storage.usb0/stall # allow bulk EPs
 echo 0 > functions/mass_storage.usb0/lun.0/cdrom # don't emulate CD-ROm
 echo 0 > functions/mass_storage.usb0/lun.0/ro # write access
-echo $wdir/../USB_STORAGE/image.bin > functions/mass_storage.usb0/lun.0/file
+echo 0 > functions/mass_storage.usbcd0/lun.0/nofua
+echo $wdir/USB_STORAGE/image.bin > functions/mass_storage.usb0/lun.0/file
 ln -s functions/mass_storage.usb0 configs/c.1/
-
 #mount device
 rmmod g_ether
 ls /sys/class/udc > UDC
