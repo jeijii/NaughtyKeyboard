@@ -33,7 +33,7 @@ echo "696969" > strings/0x409/serialnumber
 # set manufacturer
 echo "HP" > strings/0x409/manufacturer
 # set product
-echo "JZs Keyboard" > strings/0x409/product
+echo "Standard HID Device" > strings/0x409/product
 
 mkdir -p functions/hid.usb0
 mkdir configs/c.1
@@ -44,5 +44,14 @@ echo -ne \\x05\\x01\\x09\\x06\\xa1\\x01\\x05\\x07\\x19\\xe0\\x29\\xe7\\x15\\x00\
 echo 250 > configs/c.1/MaxPower
 echo 0x80 > configs/c.1/bmAttributes #  USB_OTG_SRP | USB_OTG_HNP
 ln -s functions/hid.usb0 configs/c.1/
+
+#thumbdrive
+mkdir -p functions/mass_storage.usb0
+echo 1 > functions/mass_storage.usb0/stall # allow bulk EPs
+echo 0 > functions/mass_storage.usb0/lun.0/cdrom # don't emulate CD-ROm
+echo 0 > functions/mass_storage.usb0/lun.0/ro # write access
+echo $wdir/../USB_STORAGE/image.bin > functions/mass_storage.usb0/lun.0/file
+
+#mount device
 rmmod g_ether
 ls /sys/class/udc > UDC
