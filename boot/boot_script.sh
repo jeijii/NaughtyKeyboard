@@ -3,7 +3,7 @@
 # find working dir of script
 wdir=$( cd $(dirname $BASH_SOURCE[0]) && cd .. && pwd)
 
-GADGETS_DIR=keyboard_gadget"
+GADGETS_DIR="keyboard_gadget"
 
 cd /sys/kernel/config/usb_gadget
 	mkdir -p $GADGETS_DIR
@@ -36,11 +36,12 @@ echo "HP" > strings/0x409/manufacturer
 echo "JZs Keyboard" > strings/0x409/product
 
 mkdir -p functions/hid.g1
-		PATH_HID_KEYBOARD="/sys/kernel/config/usb_gadget/$GADGETS_DIR/functions/hid.g1/dev"
-		echo 1 > functions/hid.g1/protocol
-		echo 1 > functions/hid.g1/subclass
-		echo 8 > functions/hid.g1/report_length
-cat $wdir/conf/report_desc > functions/hid.g1/report_desc
+mkdir configs/c.1
+echo 1 > functions/hid.g1/protocol
+echo 1 > functions/hid.g1/subclass
+echo 8 > functions/hid.g1/report_length
+echo -ne \\x05\\x01\\x09\\x06\\xa1\\x01\\x05\\x07\\x19\\xe0\\x29\\xe7\\x15\\x00\\x25\\x01\\x75\\x01\\x95\\x08\\x81\\x02\\x95\\x01\\x75\\x08\\x81\\x03\\x95\\x05\\x75\\x01\\x05\\x08\\x19\\x01\\x29\\x05\\x91\\x02\\x95\\x01\\x75\\x03\\x91\\x03\\x95\\x06\\x75\\x08\\x15\\x00\\x25\\x65\\x05\\x07\\x19\\x00\\x29\\x65\\x81\\x00\\xc0 > functions/hid.g1/report_desc
 echo 250 > configs/c.1/MaxPower
 echo 0x80 > configs/c.1/bmAttributes #  USB_OTG_SRP | USB_OTG_HNP
 ln -s functions/hid.g1 configs/c.1/
+ls /sys/class/udc > UDC
