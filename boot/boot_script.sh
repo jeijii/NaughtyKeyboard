@@ -33,7 +33,7 @@ echo "696969" > strings/0x409/serialnumber
 # set manufacturer
 echo "HP" > strings/0x409/manufacturer
 # set product
-echo "JZ's Keyboard" > strings/0x409/product
+echo "JZs Keyboard" > strings/0x409/product
 
 mkdir -p functions/hid.g1
 		PATH_HID_KEYBOARD="/sys/kernel/config/usb_gadget/$GADGETS_DIR/functions/hid.g1/dev"
@@ -41,4 +41,6 @@ mkdir -p functions/hid.g1
 		echo 1 > functions/hid.g1/subclass
 		echo 8 > functions/hid.g1/report_length
 cat $wdir/conf/report_desc > functions/hid.g1/report_desc
+echo 250 > configs/c.1/MaxPower
+echo 0x80 > configs/c.1/bmAttributes #  USB_OTG_SRP | USB_OTG_HNP
 ln -s functions/hid.g1 configs/c.1/

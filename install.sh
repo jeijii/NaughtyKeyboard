@@ -61,13 +61,14 @@ sudo ln -fs /etc/systemd/system/autologin@.service /etc/systemd/system/getty.tar
 
 # setup USB gadget capable overlay FS
 echo "Enable overlay filesystem for USB gadgedt suport..."
-sudo sed -n -i -e '/^dtoverlay=/!p' -e '$adtoverlay=dwc2' /boot/config.txt
+echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
+echo "dwc2" | sudo tee -a /etc/modules
 
 
 # add libcomposite to /etc/modules
 echo "Enable kernel module for USB Composite Device emulation..."
 if [ ! -f /tmp/modules ]; then sudo touch /etc/modules; fi
-sudo sed -n -i -e '/^libcomposite/!p' -e '$alibcomposite' /etc/modules
+sudo echo "libcomposite" | sudo tee -a /etc/modules
 
 # Raspbian stretch with Kernel >= 4.9.78+ (working bluetooth, nexmon module compiled for this version)
 sudo rpi-update 23a007716a0c6a8677097be859cf7063ae093d27
