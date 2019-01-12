@@ -1,0 +1,7 @@
+//COMMENT
+
+GUI R
+ENTER
+STRING notepad.exe
+ENTER
+STRING hello world
