@@ -234,7 +234,7 @@ class dakEncoder:
     def parseString(self, string):
         for c in string:
             if str(c).islower() and self.keys.__contains__(str(c).lower()):
-                self.sendReport(chr(0)*2+chr(self.keys[c])+chr(0)*5)
+                self.sendReport(chr(0)*2+chr(self.keys[str(c).lower()])+chr(0)*5)
                 self.releaseKey()
             elif str(c) == ".":
                 self.sendReport(chr(0) * 2 + chr(self.other_keys["PERIOD"]) + chr(0) * 5)
@@ -243,7 +243,7 @@ class dakEncoder:
                 self.sendReport(chr(0) * 2 + chr(self.other_keys["SPACE"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c).isupper() and self.keys.__contains__(str(c).lower()):
-                self.sendReport(chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys[c]) + chr(0) * 5)
+                self.sendReport(chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys[str(c).lower()]) + chr(0) * 5)
                 self.releaseKey()
         return None
 
