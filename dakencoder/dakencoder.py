@@ -289,7 +289,43 @@ class dakEncoder:
                 self.sendReport(
                     chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["0"]) + chr(0) * 5)
                 self.releaseKey()
-
+            elif str(c) == "-":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["MINUS"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "_":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["MINUS"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "=":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["EQUAL"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "+":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["EQUAL"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "[":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["LEFT_BRACE"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "{":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["LEFT_BRACE"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "}":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["RIGHT_BRACE"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "]":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["RIGHT_BRACE"]) + chr(
+                        0) * 5)
+                self.releaseKey()
+            elif str(c) == "\\":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["BACKSLASH"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "|":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["BACKSLASH"]) + chr(
+                        0) * 5)
+                self.releaseKey()
         return None
 
     def sendReport(self, report):
