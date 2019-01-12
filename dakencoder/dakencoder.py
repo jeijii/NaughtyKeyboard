@@ -123,7 +123,7 @@ class dakEncoder:
     def parseLines(self, lines):
         for l in lines:
             _ = l.split(" ", 1)
-            str = self.parseCommand(_);
+            str = self.parseCommand(_)
             if str is not None:
                 str.encode()
                 self.arr.append(str)
@@ -197,6 +197,7 @@ class dakEncoder:
         with open('/dev/hidg0', 'rb+') as fd:
             for item in self.arr:
                 fd.write(item)
+                time.sleep(1)
             return
 
 def main(argv):
