@@ -129,8 +129,6 @@ class dakEncoder:
             #    self.arr.append(str)
             #    release = chr(0)*8
             #    self.arr.append(release.encode())
-
-        self.sendReport()
         return
 
     def parseCommand(self, arr):
@@ -182,6 +180,7 @@ class dakEncoder:
                 time.sleep(int(arr[1])/100)
                 return None
             if arr[0] == "STRING":
+                self.parseString(arr[1])
                 return None
             if arr[0] == "GUI" or arr[0] == "WINDOWS":
                 self.sendReport(chr(self.modifier_keys["MODIFIER_GUI"])+chr(0)+chr(self.keys[str(arr[1]).lower()])+chr(0)*5)
@@ -195,7 +194,14 @@ class dakEncoder:
         return
 
     def parseString(self, string):
-        return
+        for c in string:
+            if str(c).lower() and self.keys.__contains__(str(c).lower()):
+                self.sendReport(chr(0)*2+chr(self.keys[c])+chr(0)*5)
+                self.releaseKey()
+            elif str(c) == ".":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["COMMA"]) + chr(0) * 5)
+                self.releaseKey()
+        return None
 
     def sendReport(self, report):
         with open('/dev/hidg0', 'rb+') as fd:
