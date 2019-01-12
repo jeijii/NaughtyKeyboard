@@ -207,8 +207,12 @@ class dakEncoder:
                 return None
         if len(arr) == 2:
             if arr[0] == "ALT":
-                self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(self.keys[str(arr[1]).lower()]) + chr(0) * 5)
-                self.releaseKey()
+                if self.keys.__contains__(str(arr[1]).lower()):
+                    self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(self.keys[str(arr[1]).lower()]) + chr(0) * 5)
+                    self.releaseKey()
+                else:
+                    self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(self.other_keys[str(arr[1]).lower()]) + chr(0) * 5)
+                    self.releaseKey()
                 return None
             if arr[0] == "DELAY":
                 time.sleep(int(arr[1])/100)
@@ -245,6 +249,47 @@ class dakEncoder:
             elif str(c).isupper() and self.keys.__contains__(str(c).lower()):
                 self.sendReport(chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys[str(c).lower()]) + chr(0) * 5)
                 self.releaseKey()
+            elif str(c) == "!":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["1"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "@":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["2"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "#":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["3"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "$":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["4"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "%":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["5"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "^":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["6"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "&":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["7"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "*":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["8"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "(":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["9"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == ")":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["0"]) + chr(0) * 5)
+                self.releaseKey()
+
         return None
 
     def sendReport(self, report):

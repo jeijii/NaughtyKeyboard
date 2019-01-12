@@ -7,3 +7,5 @@ STRING notepad.exe
 ENTER
 DELAY 200
 STRING Hello World
+ENTER
+STRING 123!@#$%^&*()
