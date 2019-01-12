@@ -199,7 +199,7 @@ class dakEncoder:
                 self.sendReport(chr(0)*2+chr(self.keys[c])+chr(0)*5)
                 self.releaseKey()
             elif str(c) == ".":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["COMMA"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["PERIOD"]) + chr(0) * 5)
                 self.releaseKey()
         return None
 
