@@ -207,6 +207,8 @@ class dakEncoder:
                 return None
         if len(arr) == 2:
             if arr[0] == "ALT":
+                self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(self.keys[str(arr[1]).lower()]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "DELAY":
                 time.sleep(int(arr[1])/100)
@@ -218,8 +220,12 @@ class dakEncoder:
                 self.sendReport(chr(self.modifier_keys["MODIFIER_GUI"])+chr(0)+chr(self.keys[str(arr[1]).lower()])+chr(0)*5)
                 self.releaseKey()
             if arr[0] == "SHIFT":
+                self.sendReport(chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys[str(arr[1]).lower()]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "CONTROL" or arr[0] == "CTRL":
+                self.sendReport(chr(self.modifier_keys["MODIFIER_CTRL"]) + chr(0) + chr(self.keys[str(arr[1]).lower()]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "REPEAT":
                 return None
@@ -235,6 +241,9 @@ class dakEncoder:
                 self.releaseKey()
             elif str(c) == " ":
                 self.sendReport(chr(0) * 2 + chr(self.other_keys["SPACE"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c).upper() and self.keys.__contains__(str(c).lower()):
+                self.sendReport(chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys[c]) + chr(0) * 5)
                 self.releaseKey()
         return None
 
