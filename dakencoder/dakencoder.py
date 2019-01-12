@@ -110,7 +110,7 @@ class dakEncoder:
             retlines = []
         for l in lines:
             # remove comment from line
-            l = l.split("//")[0]
+            #l = l.split("#")[0] breaks urls
             # remove line breaks
             l = l.strip().replace("\r\n", "").replace("\n", "")
             # skip empty lines
