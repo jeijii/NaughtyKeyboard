@@ -260,7 +260,7 @@ class dakEncoder:
                     self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(self.keys[str(arr[1]).lower()]) + chr(0) * 5)
                     self.releaseKey()
                 else:
-                    self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(self.other_keys[str(arr[1]).lower()]) + chr(0) * 5)
+                    self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(self.other_keys[str(arr[1]).upper()]) + chr(0) * 5)
                     self.releaseKey()
                 return None
             if arr[0] == "DELAY":
@@ -284,7 +284,7 @@ class dakEncoder:
                     self.releaseKey()
                 else:
                     self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(
-                        self.other_keys[str(arr[1]).lower()]) + chr(0) * 5)
+                        self.other_keys[str(arr[1]).upper()]) + chr(0) * 5)
                     self.releaseKey()
                 return None
             if arr[0] == "REPEAT":
