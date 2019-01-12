@@ -201,6 +201,9 @@ class dakEncoder:
             elif str(c) == ".":
                 self.sendReport(chr(0) * 2 + chr(self.other_keys["PERIOD"]) + chr(0) * 5)
                 self.releaseKey()
+            elif str(c) == " ":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["SPACE"]) + chr(0) * 5)
+                self.releaseKey()
         return None
 
     def sendReport(self, report):
