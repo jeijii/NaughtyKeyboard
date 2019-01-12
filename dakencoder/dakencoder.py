@@ -181,7 +181,7 @@ class dakEncoder:
             if arr[0] == "STRING":
                 return None
             if arr[0] == "GUI" or arr[0] == "WINDOWS":
-                return None
+                return chr(self.modifier_keys["MODIFIER_GUI"])+chr(0)+chr(self.keys[str(arr[1]).lower()])+chr(0)*5
             if arr[0] == "SHIFT":
                 return None
             if arr[0] == "CONTROL" or arr[0] == "CTRL":
