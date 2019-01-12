@@ -326,6 +326,43 @@ class dakEncoder:
                     chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["BACKSLASH"]) + chr(
                         0) * 5)
                 self.releaseKey()
+            elif str(c) == "`":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["TILDE"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "~":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["TILDE"]) + chr(
+                        0) * 5)
+                self.releaseKey()
+            elif str(c) == ";":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["SEMICOLON"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == ":":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["SEMICOLON"]) + chr(
+                        0) * 5)
+                self.releaseKey()
+            elif str(c) == ",":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["COMMA"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "<":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["COMMA"]) + chr(
+                        0) * 5)
+                self.releaseKey()
+            elif str(c) == ">":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["PERIOD"]) + chr(
+                        0) * 5)
+                self.releaseKey()
+            elif str(c) == "/":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["SLASH"]) + chr(0) * 5)
+                self.releaseKey()
+            elif str(c) == "{":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["SLASH"]) + chr(
+                        0) * 5)
+                self.releaseKey()
         return None
 
     def sendReport(self, report):

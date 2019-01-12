@@ -8,4 +8,4 @@ ENTER
 DELAY 200
 STRING Hello World
 ENTER
-STRING 123!@#$%^&*()-=_+[]{}\|
+STRING 123!@#$%^&*()-=_+[]{}\|;:'",<.>/?
