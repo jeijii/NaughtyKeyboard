@@ -5,5 +5,5 @@ ENTER
 DELAY 100
 STRING notepad.exe
 ENTER
-DELAY 300
+DELAY 200
 STRING hello world

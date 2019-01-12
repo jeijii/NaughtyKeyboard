@@ -136,38 +136,70 @@ class dakEncoder:
             if arr[0] == "REM":
                 return None
             if arr[0] == "MENU":
+                self.sendReport(chr(self.modifier_keys["MODIFIER_GUI"])+chr(0) + chr(self.keys['d']) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "ALT":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["LEFT_ALT"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "CTRL" or arr[0] == "CONTROL":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["LEFT_CTRL"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "DOWNARROW" or arr[0] == "DOWN":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["DOWN"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "LEFTARROW" or arr[0] == "LEFT":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["LEFT"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "RIGHTARROW" or arr[0] == "RIGHT":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["RIGHT"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "UPARROW" or arr[0] == "UP":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["UP"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "DELETE":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["DELETE"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "HOME":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["HOME"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "INSERT":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["INSERT"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "NUMLOCK":
                 return None
             if arr[0] == "PAGEUP":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["PAGEUP"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "PAGEDOWN":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["PAGEDOWN"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "PRINTSCREEN":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["PRINTSCREEN"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "SCROLLLOCK":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["SCROLL_LOCK"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "SPACE":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["SPACE"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "TAB":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["TAB"]) + chr(0) * 5)
+                self.releaseKey()
                 return None
             if arr[0] == "ENTER":
                 self.sendReport(chr(0)*2+chr(self.other_keys["ENTER"])+chr(0)*5)
@@ -214,6 +246,7 @@ class dakEncoder:
         with open('/dev/hidg0', 'rb+') as fd:
             str = chr(0)*8
             fd.write(str.encode())
+
 def main(argv):
     encoder = dakEncoder()
     encoder.readScript(argv[0])
