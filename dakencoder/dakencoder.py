@@ -124,11 +124,11 @@ class dakEncoder:
         for l in lines:
             _ = l.split(" ", 1)
             str = self.parseCommand(_)
-            if str is not None:
-                str.encode()
-                self.arr.append(str)
-                release = chr(0)*8
-                self.arr.append(release.encode())
+            #if str is not None:
+            #    str.encode()
+            #    self.arr.append(str)
+            #    release = chr(0)*8
+            #    self.arr.append(release.encode())
 
         self.sendReport()
         return
@@ -172,16 +172,20 @@ class dakEncoder:
             if arr[0] == "TAB":
                 return None
             if arr[0] == "ENTER":
-                return chr(0)*2+chr(self.other_keys["ENTER"])+chr(0)*5
+                self.sendReport(chr(0)*2+chr(self.other_keys["ENTER"])+chr(0)*5)
+                self.releaseKey()
+                return None
         if len(arr) == 2:
             if arr[0] == "ALT":
                 return None
             if arr[0] == "DELAY":
+                time.sleep(int(arr[1])/100)
                 return None
             if arr[0] == "STRING":
                 return None
             if arr[0] == "GUI" or arr[0] == "WINDOWS":
-                return chr(self.modifier_keys["MODIFIER_GUI"])+chr(0)+chr(self.keys[str(arr[1]).lower()])+chr(0)*5
+                self.sendReport(chr(self.modifier_keys["MODIFIER_GUI"])+chr(0)+chr(self.keys[str(arr[1]).lower()])+chr(0)*5)
+                self.releaseKey()
             if arr[0] == "SHIFT":
                 return None
             if arr[0] == "CONTROL" or arr[0] == "CTRL":
@@ -193,13 +197,14 @@ class dakEncoder:
     def parseString(self, string):
         return
 
-    def sendReport(self):
+    def sendReport(self, report):
         with open('/dev/hidg0', 'rb+') as fd:
-            for item in self.arr:
-                fd.write(item)
-                time.sleep(1)
-            return
+            fd.write(report.encode())
 
+    def releaseKey(self):
+        with open('/dev/hidg0', 'rb+') as fd:
+            str = chr(0)*8
+            fd.write(str.encode())
 def main(argv):
     encoder = dakEncoder()
     encoder.readScript(argv[0])

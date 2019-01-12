@@ -2,6 +2,7 @@
 
 GUI R
 ENTER
+DELAY 100
 STRING notepad.exe
 ENTER
 STRING hello world
