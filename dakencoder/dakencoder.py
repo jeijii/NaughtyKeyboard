@@ -205,6 +205,54 @@ class dakEncoder:
                 self.sendReport(chr(0)*2+chr(self.other_keys["ENTER"])+chr(0)*5)
                 self.releaseKey()
                 return None
+            if arr[0] == "F1":
+                self.sendReport(chr(0)*2+chr(self.other_keys["F1"])+chr(0)*5)
+                self.releaseKey()
+                return None
+            if arr[0] == "F2":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["F2"]) + chr(0) * 5)
+                self.releaseKey()
+                return None
+            if arr[0] == "F3":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["F3"]) + chr(0) * 5)
+                self.releaseKey()
+                return None
+            if arr[0] == "F4":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["F4"]) + chr(0) * 5)
+                self.releaseKey()
+                return None
+            if arr[0] == "F5":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["F5"]) + chr(0) * 5)
+                self.releaseKey()
+                return None
+            if arr[0] == "F6":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["F6"]) + chr(0) * 5)
+                self.releaseKey()
+                return None
+            if arr[0] == "F7":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["F7"]) + chr(0) * 5)
+                self.releaseKey()
+                return None
+            if arr[0] == "F8":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["F8"]) + chr(0) * 5)
+                self.releaseKey()
+                return None
+            if arr[0] == "F9":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["F9"]) + chr(0) * 5)
+                self.releaseKey()
+                return None
+            if arr[0] == "F10":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["F10"]) + chr(0) * 5)
+                self.releaseKey()
+                return None
+            if arr[0] == "F11":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["F11"]) + chr(0) * 5)
+                self.releaseKey()
+                return None
+            if arr[0] == "F12":
+                self.sendReport(chr(0) * 2 + chr(self.other_keys["F12"]) + chr(0) * 5)
+                self.releaseKey()
+                return None
         if len(arr) == 2:
             if arr[0] == "ALT":
                 if self.keys.__contains__(str(arr[1]).lower()):
