@@ -56,6 +56,7 @@ class dakEncoder:
         self.other_keys = {
             "ENTER": 0x28,
             "ESC": 0x29,
+            "ESCAPE": 0x29,
             "BACKSPACE": 0x2A,
             "TAB": 0x2b,
             "SPACE": 0x2c,
@@ -276,8 +277,15 @@ class dakEncoder:
                 self.releaseKey()
                 return None
             if arr[0] == "CONTROL" or arr[0] == "CTRL":
-                self.sendReport(chr(self.modifier_keys["MODIFIER_CTRL"]) + chr(0) + chr(self.keys[str(arr[1]).lower()]) + chr(0) * 5)
-                self.releaseKey()
+                if self.keys.__contains__(str(arr[1]).lower()):
+                    self.sendReport(
+                        chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(self.keys[str(arr[1]).lower()]) + chr(
+                            0) * 5)
+                    self.releaseKey()
+                else:
+                    self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(
+                        self.other_keys[str(arr[1]).lower()]) + chr(0) * 5)
+                    self.releaseKey()
                 return None
             if arr[0] == "REPEAT":
                 return None
