@@ -6,8 +6,6 @@ wdir=$( cd $(dirname $BASH_SOURCE[0]) && cd .. && pwd)
 GADGETS_DIR="keyboard_gadget"
 
 cd /sys/kernel/config/usb_gadget
-	mkdir -p $GADGETS_DIR
-	cd $GADGETS_DIR
 
 #thumbdrive
 mkdir -p functions/mass_storage.usb0
