@@ -52,8 +52,6 @@ class dakEncoder:
             "8": 0x25,
             "9": 0x26,
             "0": 0x27,
-        }
-        self.other_keys = {
             "ENTER": 0x28,
             "ESC": 0x29,
             "ESCAPE": 0x29,
@@ -86,7 +84,7 @@ class dakEncoder:
             "F12": 0x45,
             "PRINTSCREEN": 0x46,
             "SCROLL_LOCK": 0x47,
-            "PAUSE" : 0x48,
+            "PAUSE": 0x48,
             "INSERT": 0x49,
             "HOME": 0x4A,
             "PAGEUP": 0x4B,
@@ -141,117 +139,117 @@ class dakEncoder:
                 self.releaseKey()
                 return None
             if arr[0] == "ALT":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["LEFT_ALT"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["LEFT_ALT"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "CTRL" or arr[0] == "CONTROL":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["LEFT_CTRL"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["LEFT_CTRL"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "DOWNARROW" or arr[0] == "DOWN":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["DOWN"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["DOWN"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "LEFTARROW" or arr[0] == "LEFT":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["LEFT"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["LEFT"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "RIGHTARROW" or arr[0] == "RIGHT":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["RIGHT"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["RIGHT"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "UPARROW" or arr[0] == "UP":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["UP"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["UP"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "DELETE":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["DELETE"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["DELETE"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "HOME":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["HOME"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["HOME"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "INSERT":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["INSERT"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["INSERT"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "NUMLOCK":
                 return None
             if arr[0] == "PAGEUP":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["PAGEUP"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["PAGEUP"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "PAGEDOWN":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["PAGEDOWN"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["PAGEDOWN"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "PRINTSCREEN":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["PRINTSCREEN"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["PRINTSCREEN"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "SCROLLLOCK":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["SCROLL_LOCK"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["SCROLL_LOCK"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "SPACE":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["SPACE"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["SPACE"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "TAB":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["TAB"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["TAB"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "ENTER":
-                self.sendReport(chr(0)*2+chr(self.other_keys["ENTER"])+chr(0)*5)
+                self.sendReport(chr(0)*2+chr(self.keys["ENTER"])+chr(0)*5)
                 self.releaseKey()
                 return None
             if arr[0] == "F1":
-                self.sendReport(chr(0)*2+chr(self.other_keys["F1"])+chr(0)*5)
+                self.sendReport(chr(0)*2+chr(self.keys["F1"])+chr(0)*5)
                 self.releaseKey()
                 return None
             if arr[0] == "F2":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["F2"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["F2"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "F3":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["F3"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["F3"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "F4":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["F4"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["F4"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "F5":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["F5"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["F5"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "F6":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["F6"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["F6"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "F7":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["F7"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["F7"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "F8":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["F8"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["F8"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "F9":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["F9"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["F9"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "F10":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["F10"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["F10"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "F11":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["F11"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["F11"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
             if arr[0] == "F12":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["F12"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["F12"]) + chr(0) * 5)
                 self.releaseKey()
                 return None
         if len(arr) == 2:
@@ -260,11 +258,11 @@ class dakEncoder:
                     self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(self.keys[str(arr[1]).lower()]) + chr(0) * 5)
                     self.releaseKey()
                 else:
-                    self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(self.other_keys[str(arr[1]).upper()]) + chr(0) * 5)
+                    self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(self.keys[str(arr[1]).upper()]) + chr(0) * 5)
                     self.releaseKey()
                 return None
             if arr[0] == "DELAY":
-                time.sleep(int(arr[1])/100)
+                time.sleep(int(arr[1])/1000)
                 return None
             if arr[0] == "STRING":
                 self.parseString(arr[1])
@@ -284,7 +282,7 @@ class dakEncoder:
                     self.releaseKey()
                 else:
                     self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(
-                        self.other_keys[str(arr[1]).upper()]) + chr(0) * 5)
+                        self.keys[str(arr[1]).upper()]) + chr(0) * 5)
                     self.releaseKey()
                 return None
             if arr[0] == "REPEAT":
@@ -297,10 +295,10 @@ class dakEncoder:
                 self.sendReport(chr(0)*2+chr(self.keys[str(c).lower()])+chr(0)*5)
                 self.releaseKey()
             elif str(c) == ".":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["PERIOD"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["PERIOD"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == " ":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["SPACE"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["SPACE"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c).isupper() and self.keys.__contains__(str(c).lower()):
                 self.sendReport(chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys[str(c).lower()]) + chr(0) * 5)
@@ -346,77 +344,77 @@ class dakEncoder:
                     chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["0"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "-":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["MINUS"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["MINUS"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "_":
                 self.sendReport(
-                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["MINUS"]) + chr(0) * 5)
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["MINUS"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "=":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["EQUAL"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["EQUAL"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "+":
                 self.sendReport(
-                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["EQUAL"]) + chr(0) * 5)
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["EQUAL"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "[":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["LEFT_BRACE"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["LEFT_BRACE"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "{":
                 self.sendReport(
-                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["LEFT_BRACE"]) + chr(0) * 5)
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["LEFT_BRACE"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "}":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["RIGHT_BRACE"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["RIGHT_BRACE"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "]":
                 self.sendReport(
-                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["RIGHT_BRACE"]) + chr(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["RIGHT_BRACE"]) + chr(
                         0) * 5)
                 self.releaseKey()
             elif str(c) == "\\":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["BACKSLASH"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["BACKSLASH"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "|":
                 self.sendReport(
-                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["BACKSLASH"]) + chr(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["BACKSLASH"]) + chr(
                         0) * 5)
                 self.releaseKey()
             elif str(c) == "`":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["TILDE"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["TILDE"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "~":
                 self.sendReport(
-                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["TILDE"]) + chr(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["TILDE"]) + chr(
                         0) * 5)
                 self.releaseKey()
             elif str(c) == ";":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["SEMICOLON"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["SEMICOLON"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == ":":
                 self.sendReport(
-                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["SEMICOLON"]) + chr(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["SEMICOLON"]) + chr(
                         0) * 5)
                 self.releaseKey()
             elif str(c) == ",":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["COMMA"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["COMMA"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "<":
                 self.sendReport(
-                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["COMMA"]) + chr(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["COMMA"]) + chr(
                         0) * 5)
                 self.releaseKey()
             elif str(c) == ">":
                 self.sendReport(
-                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["PERIOD"]) + chr(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["PERIOD"]) + chr(
                         0) * 5)
                 self.releaseKey()
             elif str(c) == "/":
-                self.sendReport(chr(0) * 2 + chr(self.other_keys["SLASH"]) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(self.keys["SLASH"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "?":
                 self.sendReport(
-                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.other_keys["SLASH"]) + chr(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["SLASH"]) + chr(
                         0) * 5)
                 self.releaseKey()
             elif str(c).isdigit():
