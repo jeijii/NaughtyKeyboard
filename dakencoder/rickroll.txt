@@ -1,5 +1,5 @@
 GUI r
-DELAY 500
+DELAY 1000
 STRING https://www.youtube.com/watch?v=dQw4w9WgXcQ
 ENTER
 DELAY 5000
