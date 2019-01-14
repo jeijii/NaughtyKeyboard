@@ -11,7 +11,7 @@ sudo apt-get -y update
 sudo apt-get -y upgrade
 
 echo "Installing necessary packages..."
-sudo apt-get -y install python-pip python-dev screen
+sudo apt-get -y install python-pip python-dev screen dnsmasq hostapd
 
 echo "create udev rule for hid devices..."
 echo 'SUBSYSTEM=="hidg",KERNEL=="hidg[0-9]", MODE="0666"' > /tmp/udevrule
