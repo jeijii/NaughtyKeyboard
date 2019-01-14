@@ -6,7 +6,7 @@ cat <<- EOF > /tmp/hostapd.conf
 		# Use the nl80211 driver with the brcmfmac driver
 		driver=nl80211
 		# This is the name of the network
-		ssid= "SINGTEL-6969"
+		ssid=SINGTEL-6969
 		# Use the 2.4GHz band
 		hw_mode=g
 		# Use channel 6
@@ -27,7 +27,7 @@ cat <<- EOF > /tmp/hostapd.conf
 		# Use a pre-shared key
 		wpa_key_mgmt=WPA-PSK
 		# The network passphrase
-		wpa_passphrase="P@ssw0rd"
+		wpa_passphrase=P@ssw0rd
 		# Use AES, instead of TKIP
 		rsn_pairwise=CCMP
 EOF
