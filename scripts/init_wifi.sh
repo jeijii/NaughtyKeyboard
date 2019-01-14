@@ -30,6 +30,8 @@ cat <<- EOF > /tmp/hostapd.conf
 		wpa_passphrase=P@ssw0rd
 		# Use AES, instead of TKIP
 		rsn_pairwise=CCMP
+
+		ignore_broadcast_ssid=0
 EOF
 
 cat <<- EOF > /tmp/dnsmasq_wifi.conf
