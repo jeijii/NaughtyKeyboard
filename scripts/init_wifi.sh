@@ -39,6 +39,11 @@ cat <<- EOF > /etc/network/interfaces.d/ap
         netmask 255.255.255.0
 EOF
 
+cat <<- EOF > /etc/udev/rules.d/90-wireless.rules
+        ACTION=="add", SUBSYSTEM=="ieee80211", KERNEL=="phy0", \
+        RUN+="/sbin/iw phy %k interface add uap0 type __ap"
+EOF
+
 cat <<- EOF > /etc/default/hostapd
         DAEMON_CONF="/etc/hostapd/hostapd.conf"
 EOF
