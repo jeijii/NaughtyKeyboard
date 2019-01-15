@@ -31,7 +31,7 @@ cat <<- EOF > /etc/dnsmasq.conf
         dhcp-range=172.24.0.2,172.24.0.100,12h
 EOF
 
-cat <<- EOF > /etc/default/hostapd
+cat <<- EOF > /etc/network/interfaces.d/ap
         allow-hotplug uap0
         auto uap0
         iface uap0 inet static
@@ -39,7 +39,7 @@ cat <<- EOF > /etc/default/hostapd
         netmask 255.255.255.0
 EOF
 
-cat <<- EOF > /etc/network/interfaces.d/ap
+cat <<- EOF > /etc/default/hostapd
         DAEMON_CONF="/etc/hostapd/hostapd.conf"
 EOF
 
