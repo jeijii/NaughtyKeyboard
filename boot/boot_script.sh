@@ -1,6 +1,7 @@
 #!/bin/sh
 
-. config.cfg
+MODE_DRIVEBY=true
+DRIVEBY_SCRIPT="rickroll.txt"
 
 # find working dir of script
 wdir=$( cd $(dirname $BASH_SOURCE[0]) && cd .. && pwd)
@@ -52,7 +53,7 @@ ln -s functions/hid.usb0 configs/c.1/
 ls /sys/class/udc > UDC
 
 
-if $mode_driveby; then
-    sleep 5
-    python ../dakencoder/dakencoder.py $driveby_script
+if $MODE_DRIVEBY; then
+   sleep 1
+   python $wdir/dakencoder/dakencoder.py $wdir/dakencoder/$DRIVEBY_SCRIPT
 fi
