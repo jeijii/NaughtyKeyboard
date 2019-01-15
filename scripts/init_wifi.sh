@@ -35,10 +35,18 @@ cat <<- EOF > /tmp/hostapd.conf
 EOF
 
 cat <<- EOF > /tmp/dnsmasq_wifi.conf
+        bind-interfaces
+        port=0
 		interface=wlan0      # Use the require wireless interface - usually wlan0
-        dhcp-range=192.168.0.2,192.168.0.20,255.255.255.0,24h
+		listen-address=172.24.0.1
+        dhcp-range=172.24.0.2,172.24.0.100,255.255.255.0,24h
+        dhcp-option=3
+        dhcp-option=6
+        dhcp-leasefile=/tmp/dnsmasq_wifi.leases
+		dhcp-authoritative
+		log-dhcp
 EOF
 
 hostapd -d /tmp/hostapd.conf > /tmp/hostapd.log &
 dnsmasq -C /tmp/dnsmasq_wifi.conf
-ifconfig wlan0 192.168.0.1 netmask 255.255.255.0
+ifconfig wlan0 172.24.0.1 netmask 255.255.255.0
