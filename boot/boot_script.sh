@@ -46,5 +46,5 @@ echo 0x80 > configs/c.1/bmAttributes #  USB_OTG_SRP | USB_OTG_HNP
 ln -s functions/hid.usb0 configs/c.1/
 
 #mount device
-rmmod g_ether
+#rmmod g_ether
 ls /sys/class/udc > UDC
