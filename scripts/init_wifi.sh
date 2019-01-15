@@ -10,14 +10,14 @@ cp /etc/default/hostapd /etc/default/hostapd.orig
 
 cat <<- EOF > /etc/hostapd/hostapd.conf
 		interface=uap0
-        ssid=_AP_SSID_
+        ssid=SINGTEL-6969
         hw_mode=g
         channel=6
         macaddr_acl=0
         auth_algs=1
         ignore_broadcast_ssid=0
         wpa=2
-        wpa_passphrase=_AP_PASSWORD_
+        wpa_passphrase=P@ssw0rd
         wpa_key_mgmt=WPA-PSK
         wpa_pairwise=TKIP
         rsn_pairwise=CCMP
