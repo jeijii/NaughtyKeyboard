@@ -1,52 +1,50 @@
 #!/bin/sh
 
-cat <<- EOF > /tmp/hostapd.conf
-		# This is the name of the WiFi interface we configured above
-		interface=wlan0
-		# Use the nl80211 driver with the brcmfmac driver
-		driver=nl80211
-		# This is the name of the network
-		ssid=SINGTEL-6969
-		# Use the 2.4GHz band
-		hw_mode=g
-		# Use channel 6
-		channel= 6
-		# Enable 802.11n
-		ieee80211n=1
-		# Enable WMM
-		wmm_enabled=1
-		# Enable 40MHz channels with 20ns guard interval
-		ht_capab=[HT40][SHORT-GI-20][DSSS_CCK-40]
-		# Accept all MAC addresses
-		macaddr_acl=0
+systemctl stop hostapd
+systemctl stop dnsmasq
 
-		# Use WPA authentication
-		auth_algs=1
-		# Use WPA2
-		wpa=2
-		# Use a pre-shared key
-		wpa_key_mgmt=WPA-PSK
-		# The network passphrase
-		wpa_passphrase=P@ssw0rd
-		# Use AES, instead of TKIP
-		rsn_pairwise=CCMP
+cp /etc/hostapd/hostapd.conf /etc/hostapd/hostapd.conf.orig
+cp /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 
-		ignore_broadcast_ssid=0
+cp /etc/default/hostapd /etc/default/hostapd.orig
+
+cat <<- EOF > /etc/hostapd/hostapd.conf
+		interface=uap0
+        ssid=_AP_SSID_
+        hw_mode=g
+        channel=6
+        macaddr_acl=0
+        auth_algs=1
+        ignore_broadcast_ssid=0
+        wpa=2
+        wpa_passphrase=_AP_PASSWORD_
+        wpa_key_mgmt=WPA-PSK
+        wpa_pairwise=TKIP
+        rsn_pairwise=CCMP
 EOF
 
-cat <<- EOF > /tmp/dnsmasq_wifi.conf
+cat <<- EOF > /etc/dnsmasq.conf
+        interface=lo,uap0
+        no-dhcp-interface=lo,wlan0
         bind-interfaces
-        port=0
-		interface=wlan0      # Use the require wireless interface - usually wlan0
-		listen-address=172.24.0.1
-        dhcp-range=172.24.0.2,172.24.0.100,255.255.255.0,24h
-        dhcp-option=3
-        dhcp-option=6
-        dhcp-leasefile=/tmp/dnsmasq_wifi.leases
-		dhcp-authoritative
-		log-dhcp
+        server=8.8.8.8
+        dhcp-range=172.24.0.2,172.24.0.100,12h
 EOF
 
-hostapd -d /tmp/hostapd.conf > /tmp/hostapd.log &
-dnsmasq -C /tmp/dnsmasq_wifi.conf
-ifconfig wlan0 172.24.0.1 netmask 255.255.255.0
+cat <<- EOF > /etc/default/hostapd
+        allow-hotplug uap0
+        auto uap0
+        iface uap0 inet static
+        address 172.24.0.1
+        netmask 255.255.255.0
+EOF
+
+cat <<- EOF > /etc/network/interfaces.d/ap
+        DAEMON_CONF="/etc/hostapd/hostapd.conf"
+EOF
+
+
+echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
+echo 1 > /proc/sys/net/ipv4/ip_forward
+iptables -t nat -A POSTROUTING -s 172.24.0.0/24 ! -d 172.24.0.0/24 -j MASQUERADE
+iptables-save > /etc/iptables/rules.v4
