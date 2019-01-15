@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. config.cfg
+
 # find working dir of script
 wdir=$( cd $(dirname $BASH_SOURCE[0]) && cd .. && pwd)
 
@@ -48,3 +50,9 @@ ln -s functions/hid.usb0 configs/c.1/
 #mount device
 #rmmod g_ether
 ls /sys/class/udc > UDC
+
+
+if $mode_driveby; then
+    sleep 5
+    python ../dakencoder/dakencoder.py $driveby_script
+fi
