@@ -11,11 +11,8 @@ cp /etc/default/hostapd /etc/default/hostapd.orig
 cat <<- EOF > /etc/hostapd/hostapd.conf
 	interface=uap0
 ssid=SINGTEL-6969
-ieee80211n=1
-ht_capab=[HT40][SHORT-GI-20][DSSS_CCK-40]
-driver=nl80211
 hw_mode=g
-channel=6
+channel=1
 macaddr_acl=0
 auth_algs=1
 ignore_broadcast_ssid=0
