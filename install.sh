@@ -61,7 +61,7 @@ sudo ln -fs /etc/systemd/system/autologin@.service /etc/systemd/system/getty.tar
 
 # setup USB gadget capable overlay FS
 echo "Enable overlay filesystem for USB gadgedt suport..."
-echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
+#echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
 echo "dwc2" | sudo tee -a /etc/modules
 
 
