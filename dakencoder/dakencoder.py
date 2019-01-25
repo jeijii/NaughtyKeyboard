@@ -358,11 +358,12 @@ class dakEncoder:
                     chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["left_brace"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "}":
-                self.sendReport(chr(0) * 2 + chr(self.keys["right_brace"]) + chr(0) * 5)
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["right_brace"]) + chr(0) * 5)
                 self.releaseKey()
             elif str(c) == "]":
                 self.sendReport(
-                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["right_brace"]) + chr(
+                    chr(0) + chr(0) + chr(self.keys["right_brace"]) + chr(
                         0) * 5)
                 self.releaseKey()
             elif str(c) == "\\":
