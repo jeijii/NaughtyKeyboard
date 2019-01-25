@@ -42,9 +42,10 @@ class shell(cmd.Cmd):
     def do_list_scripts(self, arg):
         'View all the scripts available in the pi'
         conn.send("ls -l /home/pi/NaughtyKeyboard/dakencoder \r\n")
-        conn.recv(256)
-        conn.recv(256)
-        print(str(conn.recv(256)).rsplit("\n", 2)[0])
+        print(conn.recv(1028))
+        print(conn.recv(1028))
+        print(conn.recv(1028))
+        print(conn.recv(1028))
 
     def do_launch_scripts(self, arg):
         'Execute a ducky script to connected computer. \nExample: launch_script rickroll.txt'
