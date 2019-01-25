@@ -56,6 +56,10 @@ class shell(cmd.Cmd):
         'open an interactive shell to the pi'
         launchshell()
 
+    def do_exit(self, arg):
+        'Exits Application'
+        sys.exit(0)
+
 if __name__ == '__main__':
     shell().cmdloop()
 
