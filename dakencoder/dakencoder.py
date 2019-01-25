@@ -278,7 +278,7 @@ class dakEncoder:
             if arr[0] == "CONTROL" or arr[0] == "CTRL":
                 if self.keys.__contains__(str(arr[1]).lower()):
                     self.sendReport(
-                        chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(self.keys[str(arr[1]).lower()]) + chr(
+                        chr(self.modifier_keys["MODIFIER_CTRL"]) + chr(0) + chr(self.keys[str(arr[1]).lower()]) + chr(
                             0) * 5)
                     self.releaseKey()
                 return None
