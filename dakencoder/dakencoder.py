@@ -133,10 +133,10 @@ class dakEncoder:
     def parseCommand(self, arr):
         if len(arr) == 1:
             if arr[0] == "GUI":
-                self.sendReport(chr(0) * 2 + chr(int(self.keys["left_gui"], 16)) + chr(0) * 5)
+                self.sendReport(chr(0) * 2 + chr(int(self.keys["left_gui"].__str__(), 16)) + chr(0) * 5)
                 self.releaseKey()
             if arr[0] == "ADMIN":
-                self.sendReport(chr(self.modifier_keys["MODIFIER_CTRL"]) + chr(0) + chr(self.keys['left_shift']) + chr(self.keys['enter']) + chr(0) * 4)
+                self.sendReport(chr(self.modifier_keys["MODIFIER_CTRL"]) + chr(0) + chr(int(self.keys["left_shift"].__str__(), 16)) + chr(self.keys['enter']) + chr(0) * 4)
                 self.releaseKey()
                 return None
             if arr[0] == "REM":
