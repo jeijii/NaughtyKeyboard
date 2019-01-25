@@ -435,12 +435,12 @@ class dakEncoder:
 
     def sendReport(self, report):
         with open('/dev/hidg0', 'rb+') as fd:
-            fd.write(report.encode())
+            fd.write(report.encode("utf-8"))
 
     def releaseKey(self):
         with open('/dev/hidg0', 'rb+') as fd:
             str = chr(0)*8
-            fd.write(str.encode("utf-8"))
+            fd.write(str.encode())
 
 def main(argv):
     encoder = dakEncoder()
