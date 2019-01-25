@@ -133,10 +133,10 @@ class dakEncoder:
     def parseCommand(self, arr):
         if len(arr) == 1:
             if arr[0] == "GUI":
-                self.sendReportEncoded("\\0\\0\\xe3\\0\\0\\0\\0\\0")
+                self.sendReport(chr(0) * 2 + chr(int(self.keys["left_gui"].__str__(), 16)) + chr(0) * 5)
                 self.releaseKey()
             if arr[0] == "ADMIN":
-                self.sendReportEncoded("\\x1\\0\\xe1\\x28\\0\\0\\0\\0")
+                self.sendReport(chr(self.modifier_keys["MODIFIER_CTRL"]) + chr(0) + chr(self.keys['left_shift']) + chr(self.keys['enter']) + chr(0) * 4)
                 self.releaseKey()
                 return None
             if arr[0] == "REM":
@@ -437,14 +437,10 @@ class dakEncoder:
         with open('/dev/hidg0', 'rb+') as fd:
             fd.write(report.encode())
 
-    def sendReportEncoded(self, report):
-        with open('/dev/hidg0', 'rb+') as fd:
-            fd.write(report)
-
     def releaseKey(self):
         with open('/dev/hidg0', 'rb+') as fd:
             str = chr(0)*8
-            fd.write(str.encode())
+            fd.write(str.encode("utf-8"))
 
 def main(argv):
     encoder = dakEncoder()
