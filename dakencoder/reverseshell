@@ -1,5 +1,5 @@
-MENU D
-MENU R
+GUI D
+GUI R
 DELAY 1000
 STRING powershell.exe
 ENTER
