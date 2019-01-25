@@ -411,6 +411,16 @@ class dakEncoder:
                     chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["slash"]) + chr(
                         0) * 5)
                 self.releaseKey()
+            elif str(c) == "\'":
+                self.sendReport(
+                    chr(0) + chr(0) + chr(self.keys["quote"]) + chr(
+                        0) * 5)
+                self.releaseKey()
+            elif str(c) == "\"":
+                self.sendReport(
+                    chr(self.modifier_keys["MODIFIER_SHIFT"]) + chr(0) + chr(self.keys["quote"]) + chr(
+                        0) * 5)
+                self.releaseKey()
             elif str(c).isdigit():
                 self.sendReport(chr(0) * 2 + chr(self.keys[str(c)]) + chr(0) * 5)
                 self.releaseKey()
