@@ -48,7 +48,7 @@ class shell(cmd.Cmd):
 
     def do_launch_scripts(self, arg):
         'Execute a ducky script to connected computer. \nExample: launch_script rickroll.txt'
-        print(arg)
+        print("Sending Command...")
         data = "python /home/pi/NaughtyKeyboard/dakencoder/dakencoder.py /home/pi/NaughtyKeyboard/dakencoder/"+arg+" \r\n"
         conn.send(data)
 
