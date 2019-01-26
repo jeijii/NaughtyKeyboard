@@ -122,13 +122,13 @@ class dakEncoder:
     def parseLines(self, lines):
         for l in lines:
             _ = l.split(" ", 1)
-            checkarg = _[1].__str__()
-            if checkarg.startswith("$") and checkarg.endswith("$") and checkarg.__len__() < 4:
-                if len(sys.argv) > int(checkarg[1:2]) + 1:
-                    _[1] = sys.argv[int(checkarg[1:2])+1]
-                else:
-                    sys.exit()
-            print(_)
+            if len(_) is not 1:
+                checkarg = _[1].__str__()
+                if checkarg.startswith("$") and checkarg.endswith("$") and checkarg.__len__() < 4:
+                    if len(sys.argv) > int(checkarg[1:2]) + 1:
+                        _[1] = sys.argv[int(checkarg[1:2]) + 1]
+                    else:
+                        sys.exit()
             self.parseCommand(_)
         return
 
