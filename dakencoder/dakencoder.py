@@ -114,7 +114,6 @@ class dakEncoder:
             # skip empty lines
             if len(l) == 0:
                 continue
-            print(l)
             readablescript.append(l)
         self.parseLines(readablescript)
 

