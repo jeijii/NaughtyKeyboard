@@ -1,5 +1,4 @@
 GUI R
-ENTER
 DELAY 1000
 STRING notepad.exe
 ENTER
