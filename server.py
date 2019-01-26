@@ -57,6 +57,20 @@ class shell(cmd.Cmd):
         'open an interactive shell to the pi'
         launchshell()
 
+    def do_view_id(self, arg):
+        'view the pid and vid of the duck'
+        data = "cat /home/pi/NaughtyKeyboard/boot/config.cfg"
+        conn.send(data)
+        print(conn.recv(1028))
+    def do_change_pid(self, arg):
+        'Changes pid. Restart to see effect \nWARNING: Changing to an Invalid PID might cause the pi to hang.'
+        data = "python /home/pi/NaughtyKeyboard/boot/changepid.py " + arg + " \r\n"
+        conn.send(data)
+
+    def do_change_vid(self, arg):
+        'Changes vid. Restart to see effect. \nNot often needed, change PID for device to enumerate again\nWARNING: Changing to an Invalid VID might cause the pi to hang.'
+        data = "python /home/pi/NaughtyKeyboard/boot/changevid.py " + arg + " \r\n"
+        conn.send(data)
     def do_exit(self, arg):
         'Exits Application'
         sys.exit(0)
