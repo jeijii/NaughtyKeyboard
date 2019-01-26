@@ -7,6 +7,8 @@ MODE_REMOTE=true
 # find working dir of script
 wdir=$( cd $(dirname $BASH_SOURCE[0]) && cd .. && pwd)
 
+source $wdir/boot/setup.cfg
+
 GADGETS_DIR="keyboard_gadget"
 
 cd /sys/kernel/config/usb_gadget
@@ -16,8 +18,10 @@ cd /sys/kernel/config/usb_gadget
 # configure gadget details
 # =========================
 # set Vendor ID
-echo 0x1d6b > idVendor
-echo 0x0104 > idProduct
+#echo 0x1d6b > idVendor
+echo $VID > idVendor
+#echo 0x0104 > idProduct
+echo $PID > idProduct
 # set device version 1.0.0
 echo 0x0100 > bcdDevice
 # set USB mode to USB 2.0
