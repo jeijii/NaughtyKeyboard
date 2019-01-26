@@ -122,12 +122,14 @@ class dakEncoder:
     def parseLines(self, lines):
         for l in lines:
             _ = l.split(" ", 1)
-            str = self.parseCommand(_)
-            #if str is not None:
-            #    str.encode()
-            #    self.arr.append(str)
-            #    release = chr(0)*8
-            #    self.arr.append(release.encode())
+            checkarg = _[1].__str__()
+            if checkarg.startswith("$") and checkarg.endswith("$") and checkarg.__len__() < 4:
+                if len(sys.argv) > int(checkarg[1:2]) + 1:
+                    _[1] = sys.argv[int(checkarg[1:2])+1]
+                else:
+                    sys.exit()
+            print(_)
+            self.parseCommand(_)
         return
 
     def parseCommand(self, arr):
@@ -436,6 +438,7 @@ class dakEncoder:
     def sendReport(self, report):
         if self.default_delay is not 0:
             time.sleep(self.default_delay/1000)
+
         with open('/dev/hidg0', 'rb+') as fd:
             fd.write(report.encode("utf-8"))
 
