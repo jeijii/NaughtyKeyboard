@@ -100,6 +100,7 @@ class dakEncoder:
             "left_alt": 0xE2,
             "left_gui": 0xE3
         }
+        self.default_delay = 0
         self.arr = []
     def readScript(self, filename):
         readablescript = []
@@ -256,6 +257,9 @@ class dakEncoder:
                 self.releaseKey()
                 return None
         if len(arr) == 2:
+            if arr[0] == "DEFAULT_DELAY" or arr[0] == "DEFAULTDELAY":
+                self.default_delay = int(arr[1])
+
             if arr[0] == "ALT":
                 if self.keys.__contains__(str(arr[1]).lower()):
                     self.sendReport(chr(self.modifier_keys["MODIFIER_ALT"]) + chr(0) + chr(self.keys[str(arr[1]).lower()]) + chr(0) * 5)
@@ -430,6 +434,8 @@ class dakEncoder:
         return None
 
     def sendReport(self, report):
+        if self.default_delay is not 0:
+            time.sleep(self.default_delay/1000)
         with open('/dev/hidg0', 'rb+') as fd:
             fd.write(report.encode("utf-8"))
 
