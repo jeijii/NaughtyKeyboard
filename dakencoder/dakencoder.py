@@ -124,9 +124,14 @@ class dakEncoder:
             _ = l.split(" ", 1)
             if len(_) is not 1:
                 checkarg = _[1].__str__()
-                if "$1$" in checkarg or "$2$" in checkarg or "$3$":
-                    if len(sys.argv) > int(checkarg[1:2]) + 1:
-                        _[1] = sys.argv[int(checkarg[1:2]) + 1]
+                if "$1$" in checkarg:
+                    if len(sys.argv) > 2:
+                        _[1] = sys.argv[2]
+                    else:
+                        sys.exit()
+                if "$2$" in checkarg:
+                    if len(sys.argv) > 3:
+                        _[1] = sys.argv[3]
                     else:
                         sys.exit()
             self.parseCommand(_)
