@@ -1,4 +1,4 @@
-import socket, threading, sys, cmd
+import socket, threading, sys, cmd, os
 
 bind_ip = '0.0.0.0'
 bind_port = 4444
@@ -41,11 +41,10 @@ class shell(cmd.Cmd):
 
     def do_list_scripts(self, arg):
         'View all the scripts available in the pi'
-        conn.send("ls -l /home/pi/NaughtyKeyboard/dakencoder \r\n")
-        print(conn.recv(1028))
-        print(conn.recv(1028))
-        print(conn.recv(1028))
-        print(conn.recv(1028))
+        for root, dirs, files in os.walk("./dakencoder"):
+            for filename in files:
+                if filename != "dakencoder.py":
+                    print(filename)
 
     def do_launch_scripts(self, arg):
         'Execute a ducky script to connected computer. \nExample: launch_script rickroll.txt'
