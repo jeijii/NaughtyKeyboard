@@ -18,7 +18,7 @@ class S(BaseHTTPRequestHandler):
         self._set_headers()
         content_length = int(self.headers['Content-Length'])
         content = self.rfile.read(content_length)
-        with open(str(datetime.datetime.now().isoformat())+".txt", "w") as file:
+        with open(str(datetime.datetime.now().isoformat()), "w") as file:
             file.write(content)
             file.close()
 
