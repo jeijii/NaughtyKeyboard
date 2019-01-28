@@ -124,7 +124,7 @@ class dakEncoder:
             _ = l.split(" ", 1)
             if len(_) is not 1:
                 checkarg = _[1].__str__()
-                if "$1$" in checkarg or "$2$" in checkarg or "$3$":
+                if checkarg.startswith("$") and checkarg.endswith("$") and checkarg.__len__() < 4:
                     if len(sys.argv) > int(checkarg[1:2]) + 1:
                         _[1] = sys.argv[int(checkarg[1:2]) + 1]
                     else:
