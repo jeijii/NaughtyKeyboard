@@ -124,7 +124,9 @@ class dakEncoder:
             _ = l.split(" ", 1)
             if len(_) is not 1:
                 checkarg = _[1].__str__()
+                print(checkarg)
                 if "$1$" in checkarg:
+                    print("in check arg")
                     if len(sys.argv) > 1:
                         checkarg.replace("$1$", str(sys.argv[2]))
                     else:
