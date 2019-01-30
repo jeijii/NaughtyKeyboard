@@ -128,7 +128,7 @@ class dakEncoder:
                 if "$1$" in checkarg:
                     print("in check arg")
                     if len(sys.argv) > 1:
-                        checkarg.replace("$1$", str(sys.argv[2]))
+                        _[1].replace("$1$", str(sys.argv[2]))
                     else:
                         sys.exit()
             self.parseCommand(_)
